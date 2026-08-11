@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SEADON — Sky is the limit. Dive deeper.</title>
+<meta name="description" content="Seadon makes outdoor gear from recycled bottles, Tencel and reclaimed wool. Back the next campaign and wear it before anyone else." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B2239'/><path d='M20 62 Q38 40 50 56 Q62 40 80 62 Q62 54 50 66 Q38 54 20 62Z' fill='%23fff'/></svg>" />
+</head>
+<body>
+
+<!-- ================= FIXED 3D SCENE: sky -> mountains -> sea -> deep ================= -->
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<!-- depth gauge -->
+<div class="gauge" aria-hidden="true">
+  <span class="gauge__phase" id="gaugePhase">SKY</span>
+  <div class="gauge__track"><div class="gauge__fill" id="gaugeFill"></div></div>
+  <span class="gauge__read" id="gaugeRead">0 m</span>
+</div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="Seadon home">SEADON</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#how">How backing works</a>
+    <a href="#early">Join the build</a>
+  </nav>
+  <a href="#early" class="btn btn--green btn--sm">Back the build</a>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero__pin">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="tag" data-reveal>Next campaign · Autumn 2026</p>
+        <h1 class="hero__title">
+          <span class="hero__line hero__line--navy" data-split>SKY IS THE LIMIT.</span>
+          <span class="hero__line hero__line--white" data-split>DIVE DEEPER.</span>
+        </h1>
+        <div class="hero__foot">
+          <p class="hero__sub" data-reveal>
+            Seadon makes outdoor gear from recycled bottles, Tencel and reclaimed wool.
+            Back our next campaign to help build it — and wear it before anyone else.
+          </p>
+          <form class="signup" data-reveal data-signup>
+            <label class="sr-only" for="hero-email">Email address</label>
+            <input id="hero-email" type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
+            <button class="btn btn--green" type="submit">Back the campaign</button>
+          </form>
+          <p class="hero__fine" data-reveal>Free · no account needed here · nothing charged today · you only pledge later, on Kickstarter</p>
+          <ul class="hero__trust" data-reveal aria-label="Social proof">
+            <li><strong>1,240</strong> backers</li>
+            <li><strong>9</strong> campaigns, 100% delivered</li>
+            <li class="hero__scrollhint">↓ 40 seconds is all it takes to get the whole story</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero__media" data-reveal aria-hidden="true">
+        <div class="hero__media-card"></div>
+        <svg class="hero__bird" viewBox="0 0 200 120">
+          <path d="M100 66 Q64 20 18 34 Q58 44 82 66 Q60 70 44 88 Q74 80 96 74 Q118 80 148 88 Q132 70 110 66 Q134 44 174 34 Q128 20 100 66 Z" fill="#f4f8fb"/>
+          <path d="M100 66 Q64 20 18 34 Q58 44 82 66 Z" fill="#dfe9f2"/>
+          <circle cx="100" cy="64" r="7" fill="#f4f8fb"/>
+          <path d="M100 60 l7 4 -7 4 z" fill="#e8a13c"/>
+        </svg>
+        <span class="hero__media-chip">SKY → SEA → DEEP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERKS ================= -->
+<section class="section perks" id="perks">
+  <div class="section__head">
+    <h2 class="section__title section__title--navy" data-split>WHAT YOU GET FOR BEING EARLY</h2>
+    <p class="section__lede section__lede--navy" data-reveal>Four things, and none of them is a newsletter.</p>
+  </div>
+
+  <div class="perks__grid">
+    <article class="perk" data-reveal>
+      <span class="perk__label">Perks 01</span>
+      <h3 class="perk__title">The lowest price it will ever have</h3>
+      <p class="perk__body">More details when you sign up. Early-bird pricing, locked the second you pledge.</p>
+    </article>
+    <article class="perk" data-reveal>
+      <span class="perk__label">Perks 02</span>
+      <h3 class="perk__title">Yours even when it says sold out</h3>
+      <p class="perk__body">Backer orders are cut first. When the public page reads sold out, yours is on its way.</p>
+    </article>
+    <article class="perk" data-reveal>
+      <span class="perk__label">Perks 03</span>
+      <h3 class="perk__title">A sample lands at your door</h3>
+      <p class="perk__body">Not a photo — the actual fabric, in an envelope, at your address.</p>
+    </article>
+    <article class="perk" data-reveal>
+      <span class="perk__label">Perks 04</span>
+      <h3 class="perk__title">You pick what the next one looks like</h3>
+      <p class="perk__body">Colourways, fit, pocket placement, hardware — decided by the people who wear it.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section how" id="how">
+  <div class="how__top">
+    <div class="how__intro">
+      <h2 class="section__title section__title--navy" data-split>BACKING ISN'T BUYING. IT'S BUILDING.</h2>
+      <p class="section__lede section__lede--navy" data-reveal>You're not pre-ordering from a shop. You're helping a small brand make something that doesn't exist yet — and you get paid back in price, in access, and in a say.</p>
+    </div>
+    <aside class="faqcard" data-reveal>
+      <p class="faqcard__q">“Do I have to make a Kickstarter account?”</p>
+      <p class="faqcard__a">Only on launch day, and only if you decide to pledge. It's a sign-in with Google or Apple — about 30 seconds. Nothing to do today.</p>
+    </aside>
+  </div>
+
+  <div class="how__body">
+    <div class="how__media" data-reveal aria-hidden="true">
+      <div class="how__media-grad"></div>
+      <span class="how__media-cap">The journey your pledge funds</span>
+    </div>
+
+    <div class="how__railwrap">
+      <div class="how__rail" aria-hidden="true"><div class="how__rail-fill" id="railFill"></div></div>
+      <ol class="how__steps" id="howSteps">
+        <li class="step">
+          <span class="step__dot">1</span>
+          <div>
+            <span class="step__when">Today · takes 10 seconds</span>
+            <h3 class="step__title">You leave your email</h3>
+            <p class="step__body">One field. No account, no card, no commitment. This is the whole ask right now.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__dot">2</span>
+          <div>
+            <span class="step__when">Weeks before launch</span>
+            <h3 class="step__title">We send you a sample</h3>
+            <p class="step__body">The actual fabric, in an envelope. Feel it before you decide anything.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__dot">3</span>
+          <div>
+            <span class="step__when">Still before launch</span>
+            <h3 class="step__title">You vote on what's still open</h3>
+            <p class="step__body">Colourways, fit, pocket placement, hardware — decided by the people who'll wear the thing.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__dot">4</span>
+          <div>
+            <span class="step__when">Launch day · one hour early</span>
+            <h3 class="step__title">You get the link first</h3>
+            <p class="step__body">Your early-bird price is held for you, and you pledge before the campaign is public.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__dot">5</span>
+          <div>
+            <span class="step__when">After the campaign</span>
+            <h3 class="step__title">You get your order first</h3>
+            <p class="step__body">When the piece later shows “sold out” on seadon.co, yours is already on its way.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" id="stats">
+  <div class="stats__grid">
+    <div class="stat" data-reveal>
+      <span class="stat__num">$<span data-count="182">0</span>K</span>
+      <span class="stat__label">raised so far</span>
+    </div>
+    <div class="stat" data-reveal>
+      <span class="stat__num" data-count="1240">0</span>
+      <span class="stat__label">backers behind us</span>
+    </div>
+    <div class="stat" data-reveal>
+      <span class="stat__num" data-count="9">0</span>
+      <span class="stat__label">campaigns delivered</span>
+    </div>
+    <div class="stat" data-reveal>
+      <span class="stat__num"><span data-count="100">0</span>%</span>
+      <span class="stat__label">shipped, every time</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIECES ================= -->
+<section class="section pieces" id="pieces">
+  <div class="section__head section__head--center">
+    <h2 class="section__title section__title--white" data-split>TWO PIECES ARE COMING</h2>
+  </div>
+
+  <div class="pieces__grid">
+    <article class="piece piece--tilt-l" data-reveal>
+      <div class="piece__media" aria-hidden="true"><div class="piece__grad piece__grad--merino"></div></div>
+      <div class="piece__cap">
+        <h3 class="piece__title">Merino that breathes both ways</h3>
+        <p class="piece__meta">In progress · campaign opens July</p>
+      </div>
+    </article>
+    <article class="piece piece--tilt-r" data-reveal>
+      <div class="piece__media" aria-hidden="true"><div class="piece__grad piece__grad--gale"></div></div>
+      <div class="piece__cap">
+        <h3 class="piece__title">Gale — 100% waterproof, 0% plastic guilt</h3>
+        <p class="piece__meta">In progress · campaign opens Oct / Nov</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= MATERIALS ================= -->
+<section class="section materials" id="materials">
+  <div class="section__head">
+    <h2 class="section__title section__title--white" data-split>CUT FROM WHAT WAS THROWN AWAY</h2>
+    <p class="section__lede section__lede--white" data-reveal>Nothing here is finished. These are the swatches on our table right now — the actual stuff your campaign pays to turn into a jacket.</p>
+  </div>
+
+  <div class="materials__grid">
+    <article class="matcard" data-reveal>
+      <div class="matcard__tex matcard__tex--tencel" aria-hidden="true"></div>
+      <h3 class="matcard__title">Tencel</h3>
+      <p class="matcard__body">Spun from sustainably harvested wood, in a closed loop that reuses its own solvent. Soft, and it doesn't come from oil.</p>
+      <span class="matcard__tag">Swatch 01 · wood pulp</span>
+    </article>
+    <article class="matcard" data-reveal>
+      <div class="matcard__tex matcard__tex--wool" aria-hidden="true"></div>
+      <h3 class="matcard__title">Recycled wool</h3>
+      <p class="matcard__body">Old garments, shredded back to fibre and respun. Warm without asking anything new of the planet.</p>
+      <span class="matcard__tag">Swatch 02 · reclaimed</span>
+    </article>
+    <article class="matcard" data-reveal>
+      <div class="matcard__tex matcard__tex--poly" aria-hidden="true"></div>
+      <h3 class="matcard__title">Recycled polyester</h3>
+      <p class="matcard__body">Roughly 11 bottles that were heading for landfill or sea, per jacket. Pulled out, cleaned, drawn into yarn.</p>
+      <span class="matcard__tag">Swatch 03 · post-consumer</span>
+    </article>
+  </div>
+</section>
+
+<!-- ================= IMPACT ================= -->
+<section class="section impact" id="impact">
+  <div class="section__head">
+    <h2 class="section__title section__title--white" data-split>WHAT YOUR NAME ON THE LIST ACTUALLY DOES</h2>
+  </div>
+  <div class="impact__grid">
+    <div class="impact__cell" data-reveal>
+      <span class="impact__num" data-count="11">0</span>
+      <span class="impact__label">bottles kept out of the ocean, per jacket made</span>
+    </div>
+    <div class="impact__cell" data-reveal>
+      <span class="impact__num"><span data-count="1">0</span>%</span>
+      <span class="impact__label">of every sale goes to ocean protection</span>
+    </div>
+    <div class="impact__cell" data-reveal>
+      <span class="impact__num" data-count="0">0</span>
+      <span class="impact__label">new plastic drawn from oil for the shell fabric</span>
+    </div>
+    <div class="impact__cell" data-reveal>
+      <span class="impact__num" data-count="300">0</span>
+      <span class="impact__label">backers needed to make the production run happen at all</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOICES ================= -->
+<section class="section voices" id="voices">
+  <div class="section__head">
+    <h2 class="section__title section__title--white" data-split>FROM PEOPLE WHO ALREADY DID THIS</h2>
+    <p class="section__lede section__lede--white" data-reveal>Nothing here is finished. These are the swatches on our table right now — the actual stuff your campaign pays to turn into a jacket.</p>
+  </div>
+  <div class="voices__grid">
+    <blockquote class="voice" data-reveal>
+      <p class="voice__quote">“Showed up ahead of schedule, exactly as described. I've backed all three campaigns now.”</p>
+      <footer class="voice__who">verified backer since 2018 · campaigns 1–3</footer>
+    </blockquote>
+    <blockquote class="voice" data-reveal>
+      <p class="voice__quote">“Felt like I was in on something before everyone else.”</p>
+      <footer class="voice__who">verified backer since 2022 · campaigns 1–3</footer>
+    </blockquote>
+    <a class="voice voice--link" href="#early" data-reveal>
+      <p class="voice__quote">See all backer comments on Kickstarter →</p>
+      <footer class="voice__who">every review, unedited</footer>
+    </a>
+  </div>
+</section>
+
+<!-- ================= EARLY ================= -->
+<section class="section early" id="early">
+  <div class="early__inner">
+    <h2 class="section__title section__title--white" data-split>THE FIRST 100 GET IN BEFORE THE DOORS OPEN</h2>
+    <p class="section__lede section__lede--white" data-reveal>Early-bird price, first vote on the open details, and the launch link an hour before everyone else.</p>
+
+    <div class="early__meter" data-reveal role="img" aria-label="37 of 100 early spots claimed, 63 left">
+      <div class="early__meter-track"><div class="early__meter-fill" id="meterFill"></div></div>
+      <p class="early__meter-note"><strong>63 of 100 spots left</strong> — sign up to claim your first badge</p>
+    </div>
+
+    <a class="btn btn--green btn--big" href="#open" data-reveal>Sign up to claim your first badge</a>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="section open" id="open">
+  <div class="open__inner">
+    <h2 class="section__title section__title--white" data-split>BE THERE WHEN IT OPENS</h2>
+    <p class="section__lede section__lede--white" data-reveal>One email. That's it. We'll tell you the moment the campaign goes live.</p>
+    <form class="signup signup--center" data-reveal data-signup>
+      <label class="sr-only" for="early-email">Email address</label>
+      <input id="early-email" type="email" name="email" placeholder="Your email" required autocomplete="email" />
+      <button class="btn btn--green" type="submit">Back the campaign</button>
+    </form>
+    <p class="hero__fine hero__fine--white" data-reveal>No account · nothing charged today · unsubscribe whenever</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer__bar">
+    <div class="footer__brand">
+      <span class="footer__logo">SEADON</span>
+      <span class="footer__tag">Buy Better, Tread Lighter.</span>
+    </div>
+    <nav class="footer__links" aria-label="Legal">
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Privacy</a>
+    </nav>
+    <span class="footer__copy">© 2025 Seadon. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="assets/js/three-scene.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
