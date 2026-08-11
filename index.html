@@ -30,7 +30,7 @@
     <a href="#how">How backing works</a>
     <a href="#early">Join the build</a>
   </nav>
-  <a href="#early" class="btn btn--green btn--sm">Back the build</a>
+  <a href="#early" class="btn btn--green btn--sm" data-magnet>Back the build</a>
 </header>
 
 <main id="top">
@@ -53,7 +53,7 @@
           <form class="signup" data-reveal data-signup>
             <label class="sr-only" for="hero-email">Email address</label>
             <input id="hero-email" type="email" name="email" placeholder="Enter your email" required autocomplete="email" />
-            <button class="btn btn--green" type="submit">Back the campaign</button>
+            <button class="btn btn--green" type="submit" data-magnet>Back the campaign</button>
           </form>
           <p class="hero__fine" data-reveal>Free · no account needed here · nothing charged today · you only pledge later, on Kickstarter</p>
           <ul class="hero__trust" data-reveal aria-label="Social proof">
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="hero__media" data-reveal aria-hidden="true">
+      <div class="hero__media glare" data-reveal data-parallax aria-hidden="true">
         <div class="hero__media-card"></div>
         <svg class="hero__bird" viewBox="0 0 200 120">
           <path d="M100 66 Q64 20 18 34 Q58 44 82 66 Q60 70 44 88 Q74 80 96 74 Q118 80 148 88 Q132 70 110 66 Q134 44 174 34 Q128 20 100 66 Z" fill="#f4f8fb"/>
@@ -81,27 +81,27 @@
 <!-- ================= PERKS ================= -->
 <section class="section perks" id="perks">
   <div class="section__head">
-    <h2 class="section__title section__title--navy" data-split>WHAT YOU GET FOR BEING EARLY</h2>
+    <h2 class="section__title section__title--navy" data-split data-skew>WHAT YOU GET FOR BEING EARLY</h2>
     <p class="section__lede section__lede--navy" data-reveal>Four things, and none of them is a newsletter.</p>
   </div>
 
   <div class="perks__grid">
-    <article class="perk" data-reveal>
+    <article class="perk spot tilt glare" data-reveal data-tilt>
       <span class="perk__label">Perks 01</span>
       <h3 class="perk__title">The lowest price it will ever have</h3>
       <p class="perk__body">More details when you sign up. Early-bird pricing, locked the second you pledge.</p>
     </article>
-    <article class="perk" data-reveal>
+    <article class="perk spot tilt glare" data-reveal data-tilt>
       <span class="perk__label">Perks 02</span>
       <h3 class="perk__title">Yours even when it says sold out</h3>
       <p class="perk__body">Backer orders are cut first. When the public page reads sold out, yours is on its way.</p>
     </article>
-    <article class="perk" data-reveal>
+    <article class="perk spot tilt glare" data-reveal data-tilt>
       <span class="perk__label">Perks 03</span>
       <h3 class="perk__title">A sample lands at your door</h3>
       <p class="perk__body">Not a photo — the actual fabric, in an envelope, at your address.</p>
     </article>
-    <article class="perk" data-reveal>
+    <article class="perk spot tilt glare" data-reveal data-tilt>
       <span class="perk__label">Perks 04</span>
       <h3 class="perk__title">You pick what the next one looks like</h3>
       <p class="perk__body">Colourways, fit, pocket placement, hardware — decided by the people who wear it.</p>
@@ -113,17 +113,17 @@
 <section class="section how" id="how">
   <div class="how__top">
     <div class="how__intro">
-      <h2 class="section__title section__title--navy" data-split>BACKING ISN'T BUYING. IT'S BUILDING.</h2>
+      <h2 class="section__title section__title--navy" data-split data-skew>BACKING ISN'T BUYING. IT'S BUILDING.</h2>
       <p class="section__lede section__lede--navy" data-reveal>You're not pre-ordering from a shop. You're helping a small brand make something that doesn't exist yet — and you get paid back in price, in access, and in a say.</p>
     </div>
-    <aside class="faqcard" data-reveal>
+    <aside class="faqcard spot glare" data-reveal>
       <p class="faqcard__q">“Do I have to make a Kickstarter account?”</p>
       <p class="faqcard__a">Only on launch day, and only if you decide to pledge. It's a sign-in with Google or Apple — about 30 seconds. Nothing to do today.</p>
     </aside>
   </div>
 
   <div class="how__body">
-    <div class="how__media" data-reveal aria-hidden="true">
+    <div class="how__media glare" data-reveal data-parallax aria-hidden="true">
       <div class="how__media-grad"></div>
       <span class="how__media-cap">The journey your pledge funds</span>
     </div>
@@ -137,6 +137,8 @@
             <span class="step__when">Today · takes 10 seconds</span>
             <h3 class="step__title">You leave your email</h3>
             <p class="step__body">One field. No account, no card, no commitment. This is the whole ask right now.</p>
+            <div class="step__more"><p>No account, no card, no commitment — this is the whole ask right now. Takes less than 10 seconds.</p></div>
+            <span class="step__hint">Tap for more</span>
           </div>
         </li>
         <li class="step">
@@ -145,6 +147,8 @@
             <span class="step__when">Weeks before launch</span>
             <h3 class="step__title">We send you a sample</h3>
             <p class="step__body">The actual fabric, in an envelope. Feel it before you decide anything.</p>
+            <div class="step__more"><p>Feel the weight, the hand, the weave — the real material, not a photo render.</p></div>
+            <span class="step__hint">Tap for more</span>
           </div>
         </li>
         <li class="step">
@@ -153,6 +157,8 @@
             <span class="step__when">Still before launch</span>
             <h3 class="step__title">You vote on what's still open</h3>
             <p class="step__body">Colourways, fit, pocket placement, hardware — decided by the people who'll wear the thing.</p>
+            <div class="step__more"><p>Your vote counts the same as ours. The open details get decided by the people who'll wear the thing.</p></div>
+            <span class="step__hint">Tap for more</span>
           </div>
         </li>
         <li class="step">
@@ -161,6 +167,8 @@
             <span class="step__when">Launch day · one hour early</span>
             <h3 class="step__title">You get the link first</h3>
             <p class="step__body">Your early-bird price is held for you, and you pledge before the campaign is public.</p>
+            <div class="step__more"><p>One hour before the public sees it, you already have the link and the locked price.</p></div>
+            <span class="step__hint">Tap for more</span>
           </div>
         </li>
         <li class="step">
@@ -169,6 +177,8 @@
             <span class="step__when">After the campaign</span>
             <h3 class="step__title">You get your order first</h3>
             <p class="step__body">When the piece later shows “sold out” on seadon.co, yours is already on its way.</p>
+            <div class="step__more"><p>Backer orders are cut and shipped before the retail run even opens.</p></div>
+            <span class="step__hint">Tap for more</span>
           </div>
         </li>
       </ol>
@@ -201,18 +211,18 @@
 <!-- ================= PIECES ================= -->
 <section class="section pieces" id="pieces">
   <div class="section__head section__head--center">
-    <h2 class="section__title section__title--white" data-split>TWO PIECES ARE COMING</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>TWO PIECES ARE COMING</h2>
   </div>
 
   <div class="pieces__grid">
-    <article class="piece piece--tilt-l" data-reveal>
+    <article class="piece piece--tilt-l spot" data-reveal data-parallax>
       <div class="piece__media" aria-hidden="true"><div class="piece__grad piece__grad--merino"></div></div>
       <div class="piece__cap">
         <h3 class="piece__title">Merino that breathes both ways</h3>
         <p class="piece__meta">In progress · campaign opens July</p>
       </div>
     </article>
-    <article class="piece piece--tilt-r" data-reveal>
+    <article class="piece piece--tilt-r spot" data-reveal data-parallax>
       <div class="piece__media" aria-hidden="true"><div class="piece__grad piece__grad--gale"></div></div>
       <div class="piece__cap">
         <h3 class="piece__title">Gale — 100% waterproof, 0% plastic guilt</h3>
@@ -225,24 +235,24 @@
 <!-- ================= MATERIALS ================= -->
 <section class="section materials" id="materials">
   <div class="section__head">
-    <h2 class="section__title section__title--white" data-split>CUT FROM WHAT WAS THROWN AWAY</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>CUT FROM WHAT WAS THROWN AWAY</h2>
     <p class="section__lede section__lede--white" data-reveal>Nothing here is finished. These are the swatches on our table right now — the actual stuff your campaign pays to turn into a jacket.</p>
   </div>
 
   <div class="materials__grid">
-    <article class="matcard" data-reveal>
+    <article class="matcard spot tilt" data-reveal data-tilt>
       <div class="matcard__tex matcard__tex--tencel" aria-hidden="true"></div>
       <h3 class="matcard__title">Tencel</h3>
       <p class="matcard__body">Spun from sustainably harvested wood, in a closed loop that reuses its own solvent. Soft, and it doesn't come from oil.</p>
       <span class="matcard__tag">Swatch 01 · wood pulp</span>
     </article>
-    <article class="matcard" data-reveal>
+    <article class="matcard spot tilt" data-reveal data-tilt>
       <div class="matcard__tex matcard__tex--wool" aria-hidden="true"></div>
       <h3 class="matcard__title">Recycled wool</h3>
       <p class="matcard__body">Old garments, shredded back to fibre and respun. Warm without asking anything new of the planet.</p>
       <span class="matcard__tag">Swatch 02 · reclaimed</span>
     </article>
-    <article class="matcard" data-reveal>
+    <article class="matcard spot tilt" data-reveal data-tilt>
       <div class="matcard__tex matcard__tex--poly" aria-hidden="true"></div>
       <h3 class="matcard__title">Recycled polyester</h3>
       <p class="matcard__body">Roughly 11 bottles that were heading for landfill or sea, per jacket. Pulled out, cleaned, drawn into yarn.</p>
@@ -254,22 +264,22 @@
 <!-- ================= IMPACT ================= -->
 <section class="section impact" id="impact">
   <div class="section__head">
-    <h2 class="section__title section__title--white" data-split>WHAT YOUR NAME ON THE LIST ACTUALLY DOES</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>WHAT YOUR NAME ON THE LIST ACTUALLY DOES</h2>
   </div>
   <div class="impact__grid">
-    <div class="impact__cell" data-reveal>
+    <div class="impact__cell" data-reveal data-count-cell>
       <span class="impact__num" data-count="11">0</span>
       <span class="impact__label">bottles kept out of the ocean, per jacket made</span>
     </div>
-    <div class="impact__cell" data-reveal>
+    <div class="impact__cell" data-reveal data-count-cell>
       <span class="impact__num"><span data-count="1">0</span>%</span>
       <span class="impact__label">of every sale goes to ocean protection</span>
     </div>
-    <div class="impact__cell" data-reveal>
+    <div class="impact__cell" data-reveal data-count-cell>
       <span class="impact__num" data-count="0">0</span>
       <span class="impact__label">new plastic drawn from oil for the shell fabric</span>
     </div>
-    <div class="impact__cell" data-reveal>
+    <div class="impact__cell" data-reveal data-count-cell>
       <span class="impact__num" data-count="300">0</span>
       <span class="impact__label">backers needed to make the production run happen at all</span>
     </div>
@@ -279,19 +289,19 @@
 <!-- ================= VOICES ================= -->
 <section class="section voices" id="voices">
   <div class="section__head">
-    <h2 class="section__title section__title--white" data-split>FROM PEOPLE WHO ALREADY DID THIS</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>FROM PEOPLE WHO ALREADY DID THIS</h2>
     <p class="section__lede section__lede--white" data-reveal>Nothing here is finished. These are the swatches on our table right now — the actual stuff your campaign pays to turn into a jacket.</p>
   </div>
   <div class="voices__grid">
-    <blockquote class="voice" data-reveal>
+    <blockquote class="voice spot tilt" data-reveal data-tilt>
       <p class="voice__quote">“Showed up ahead of schedule, exactly as described. I've backed all three campaigns now.”</p>
       <footer class="voice__who">verified backer since 2018 · campaigns 1–3</footer>
     </blockquote>
-    <blockquote class="voice" data-reveal>
+    <blockquote class="voice spot tilt" data-reveal data-tilt>
       <p class="voice__quote">“Felt like I was in on something before everyone else.”</p>
       <footer class="voice__who">verified backer since 2022 · campaigns 1–3</footer>
     </blockquote>
-    <a class="voice voice--link" href="#early" data-reveal>
+    <a class="voice voice--link spot tilt" href="#early" data-reveal data-tilt>
       <p class="voice__quote">See all backer comments on Kickstarter →</p>
       <footer class="voice__who">every review, unedited</footer>
     </a>
@@ -301,7 +311,7 @@
 <!-- ================= EARLY ================= -->
 <section class="section early" id="early">
   <div class="early__inner">
-    <h2 class="section__title section__title--white" data-split>THE FIRST 100 GET IN BEFORE THE DOORS OPEN</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>THE FIRST 100 GET IN BEFORE THE DOORS OPEN</h2>
     <p class="section__lede section__lede--white" data-reveal>Early-bird price, first vote on the open details, and the launch link an hour before everyone else.</p>
 
     <div class="early__meter" data-reveal role="img" aria-label="37 of 100 early spots claimed, 63 left">
@@ -309,19 +319,19 @@
       <p class="early__meter-note"><strong>63 of 100 spots left</strong> — sign up to claim your first badge</p>
     </div>
 
-    <a class="btn btn--green btn--big" href="#open" data-reveal>Sign up to claim your first badge</a>
+    <a class="btn btn--green btn--big" href="#open" data-reveal data-magnet>Sign up to claim your first badge</a>
   </div>
 </section>
 
 <!-- ================= FINAL CTA ================= -->
 <section class="section open" id="open">
   <div class="open__inner">
-    <h2 class="section__title section__title--white" data-split>BE THERE WHEN IT OPENS</h2>
+    <h2 class="section__title section__title--white" data-split data-skew>BE THERE WHEN IT OPENS</h2>
     <p class="section__lede section__lede--white" data-reveal>One email. That's it. We'll tell you the moment the campaign goes live.</p>
     <form class="signup signup--center" data-reveal data-signup>
       <label class="sr-only" for="early-email">Email address</label>
       <input id="early-email" type="email" name="email" placeholder="Your email" required autocomplete="email" />
-      <button class="btn btn--green" type="submit">Back the campaign</button>
+      <button class="btn btn--green" type="submit" data-magnet>Back the campaign</button>
     </form>
     <p class="hero__fine hero__fine--white" data-reveal>No account · nothing charged today · unsubscribe whenever</p>
   </div>

@@ -738,6 +738,94 @@ a { color: inherit; }
 .footer__links a:hover { color: var(--green-500); }
 .footer__copy { font-size: 12.5px; }
 
+/* ---------- PREMIUM INTERACTIONS ---------- */
+:root { --mx: 50%; --my: 50%; }
+
+/* spotlight that follows the cursor on cards */
+.spot {
+  position: relative;
+}
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(340px circle at var(--mx) var(--my), rgba(47, 191, 113, 0.14), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out);
+  pointer-events: none;
+  z-index: 0;
+}
+.spot:hover::before { opacity: 1; }
+
+/* glare sweep on hover */
+.glare::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.35) 46%, rgba(255, 255, 255, 0.08) 54%, transparent 70%);
+  background-size: 250% 250%;
+  background-position: 130% 130%;
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+}
+.glare:hover::after {
+  opacity: 1;
+  transition: opacity var(--dur-med) var(--ease-out), background-position 0.9s var(--ease-out);
+  background-position: -30% -30%;
+}
+
+/* tilt containers keep children in 3D */
+.tilt { transform-style: preserve-3d; will-change: transform; }
+.tilt > * { position: relative; z-index: 2; }
+.tilt__lift { transform: translateZ(26px); }
+
+/* magnetic buttons */
+[data-magnet] { will-change: transform; }
+
+/* nav link underline slide */
+.nav__links a { position: relative; }
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 4px; right: 4px; bottom: 4px;
+  height: 2px;
+  background: var(--green-500);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.nav__links a:hover::after { transform: scaleX(1); }
+
+/* interactive step: clickable expand */
+.step { cursor: pointer; }
+.step__more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur-med) var(--ease-out);
+}
+.step.is-open .step__more { grid-template-rows: 1fr; }
+.step__more > p { overflow: hidden; color: var(--ink-dim); font-size: 0.9rem; margin-top: 8px; }
+.step__hint {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: rgba(11, 34, 57, 0.4);
+  margin-top: 8px;
+}
+
+/* scroll velocity skew targets */
+[data-skew] { will-change: transform; }
+
+@media (hover: none) {
+  .spot::before, .glare::after { display: none; }
+}
+
 /* ---------- SCROLL REVEAL DEFAULTS ---------- */
 .js [data-reveal] { opacity: 0; transform: translateY(34px); }
 .js .hero__title .split-line { display: block; overflow: hidden; }

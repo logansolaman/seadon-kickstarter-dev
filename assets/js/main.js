@@ -199,5 +199,118 @@
     });
   }
 
+  /* ================= PREMIUM: cursor spotlight on cards ================= */
+  document.querySelectorAll(".spot").forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  });
+
+  /* ================= PREMIUM: 3D tilt cards ================= */
+  if (!isMobile) {
+    document.querySelectorAll("[data-tilt]").forEach((card) => {
+      card.style.perspective = "900px";
+      const rx = gsap.quickTo(card, "rotationX", { duration: 0.45, ease: "power3.out" });
+      const ry = gsap.quickTo(card, "rotationY", { duration: 0.45, ease: "power3.out" });
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        ry(px * 10);
+        rx(-py * 8);
+      }, { passive: true });
+      card.addEventListener("pointerleave", () => { rx(0); ry(0); });
+    });
+  }
+
+  /* ================= PREMIUM: magnetic buttons ================= */
+  document.querySelectorAll("[data-magnet]").forEach((btn) => {
+    const mx = gsap.quickTo(btn, "x", { duration: 0.4, ease: "elastic.out(1, 0.4)" });
+    const my = gsap.quickTo(btn, "y", { duration: 0.4, ease: "elastic.out(1, 0.4)" });
+    btn.addEventListener("pointermove", (e) => {
+      const r = btn.getBoundingClientRect();
+      mx((e.clientX - r.left - r.width / 2) * 0.32);
+      my((e.clientY - r.top - r.height / 2) * 0.32);
+    }, { passive: true });
+    btn.addEventListener("pointerleave", () => { mx(0); my(0); });
+  });
+
+  /* ================= PREMIUM: scroll-velocity skew on headings ================= */
+  const skewEls = gsap.utils.toArray("[data-skew]");
+  let skewProxy = { v: 0 };
+  const skewSetter = gsap.quickTo(skewProxy, "v", { duration: 0.4, ease: "power3.out",
+    onUpdate: () => {
+      const v = gsap.utils.clamp(-4, 4, skewProxy.v);
+      skewEls.forEach((el) => { el.style.transform = `skewY(${v}deg)`; });
+    },
+  });
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => skewSetter(self.getVelocity() / 220),
+  });
+
+  /* ================= PREMIUM: parallax media (scroll + mouse) ================= */
+  gsap.utils.toArray("[data-parallax]").forEach((el) => {
+    gsap.fromTo(el, { y: 40 }, {
+      y: -40,
+      ease: "none",
+      scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 0.6 },
+    });
+  });
+
+  /* hero media card: subtle mouse-follow depth */
+  const heroMedia = document.querySelector(".hero__media");
+  if (heroMedia && !isMobile) {
+    const hx = gsap.quickTo(heroMedia, "x", { duration: 0.6, ease: "power3.out" });
+    const hy = gsap.quickTo(heroMedia, "y", { duration: 0.6, ease: "power3.out" });
+    window.addEventListener("pointermove", (e) => {
+      const nx = e.clientX / window.innerWidth - 0.5;
+      const ny = e.clientY / window.innerHeight - 0.5;
+      hx(nx * -18);
+      hy(ny * -12);
+    }, { passive: true });
+  }
+
+  /* ================= PREMIUM: expandable steps ================= */
+  document.querySelectorAll(".step").forEach((step) => {
+    step.addEventListener("click", () => {
+      const wasOpen = step.classList.contains("is-open");
+      document.querySelectorAll(".step.is-open").forEach((s) => s.classList.remove("is-open"));
+      if (!wasOpen) {
+        step.classList.add("is-open");
+        const more = step.querySelector(".step__more");
+        if (more) gsap.fromTo(more, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+      }
+    });
+    step.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); step.click(); }
+    });
+    step.setAttribute("tabindex", "0");
+    step.setAttribute("role", "button");
+    step.setAttribute("aria-expanded", "false");
+  });
+
+  /* ================= PREMIUM: nav hides on scroll-down, shows on scroll-up ================= */
+  const nav = document.getElementById("nav");
+  let lastY = window.scrollY;
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+      const y = window.scrollY;
+      if (y > lastY && y > 200) {
+        gsap.to(nav, { y: -80, duration: 0.3, ease: "power2.out" });
+      } else {
+        gsap.to(nav, { y: 0, duration: 0.3, ease: "power2.out" });
+      }
+      lastY = y;
+    },
+  });
+
   window.addEventListener("load", () => ScrollTrigger.refresh());
 })();
